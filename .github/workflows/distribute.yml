@@ -1,0 +1,17 @@
+name: distribute
+
+on:
+  push:
+    tags:
+      - "v*"
+  workflow_dispatch:
+
+jobs:
+  pwabuilder:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: PWABuilder placeholder
+        run: |
+          echo "TODO: invoke PWABuilder CLI to package PWA → AAB/MSIX/iOS-project"
+          echo "Tag: ${GITHUB_REF_NAME:-manual}"

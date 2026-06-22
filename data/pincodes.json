@@ -1,0 +1,128 @@
+{
+  "source": "https://data.gov.in/resource/all-india-pincode-directory",
+  "fetchedAt": "2026-06-22T10:39:13.878Z",
+  "upstreamUsed": false,
+  "count": 20,
+  "pincodes": [
+    {
+      "officeName": "Mumbai GPO",
+      "pincode": "400001",
+      "district": "Mumbai",
+      "state": "Maharashtra"
+    },
+    {
+      "officeName": "New Delhi GPO",
+      "pincode": "110001",
+      "district": "New Delhi",
+      "state": "Delhi"
+    },
+    {
+      "officeName": "Bangalore GPO",
+      "pincode": "560001",
+      "district": "Bengaluru Urban",
+      "state": "Karnataka"
+    },
+    {
+      "officeName": "Chennai GPO",
+      "pincode": "600001",
+      "district": "Chennai",
+      "state": "Tamil Nadu"
+    },
+    {
+      "officeName": "Kolkata GPO",
+      "pincode": "700001",
+      "district": "Kolkata",
+      "state": "West Bengal"
+    },
+    {
+      "officeName": "Hyderabad GPO",
+      "pincode": "500001",
+      "district": "Hyderabad",
+      "state": "Telangana"
+    },
+    {
+      "officeName": "Pune GPO",
+      "pincode": "411001",
+      "district": "Pune",
+      "state": "Maharashtra"
+    },
+    {
+      "officeName": "Ahmedabad GPO",
+      "pincode": "380001",
+      "district": "Ahmedabad",
+      "state": "Gujarat"
+    },
+    {
+      "officeName": "Jaipur GPO",
+      "pincode": "302001",
+      "district": "Jaipur",
+      "state": "Rajasthan"
+    },
+    {
+      "officeName": "Lucknow GPO",
+      "pincode": "226001",
+      "district": "Lucknow",
+      "state": "Uttar Pradesh"
+    },
+    {
+      "officeName": "Bhopal GPO",
+      "pincode": "462001",
+      "district": "Bhopal",
+      "state": "Madhya Pradesh"
+    },
+    {
+      "officeName": "Patna GPO",
+      "pincode": "800001",
+      "district": "Patna",
+      "state": "Bihar"
+    },
+    {
+      "officeName": "Chandigarh GPO",
+      "pincode": "160001",
+      "district": "Chandigarh",
+      "state": "Chandigarh"
+    },
+    {
+      "officeName": "Indore GPO",
+      "pincode": "452001",
+      "district": "Indore",
+      "state": "Madhya Pradesh"
+    },
+    {
+      "officeName": "Nagpur GPO",
+      "pincode": "440001",
+      "district": "Nagpur",
+      "state": "Maharashtra"
+    },
+    {
+      "officeName": "Surat GPO",
+      "pincode": "395001",
+      "district": "Surat",
+      "state": "Gujarat"
+    },
+    {
+      "officeName": "Kanpur GPO",
+      "pincode": "208001",
+      "district": "Kanpur Nagar",
+      "state": "Uttar Pradesh"
+    },
+    {
+      "officeName": "Visakhapatnam GPO",
+      "pincode": "530001",
+      "district": "Visakhapatnam",
+      "state": "Andhra Pradesh"
+    },
+    {
+      "officeName": "Vadodara GPO",
+      "pincode": "390001",
+      "district": "Vadodara",
+      "state": "Gujarat"
+    },
+    {
+      "officeName": "Coimbatore GPO",
+      "pincode": "641001",
+      "district": "Coimbatore",
+      "state": "Tamil Nadu"
+    }
+  ]
+}

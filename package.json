@@ -1,0 +1,16 @@
+{
+  "name": "oriz-pincode-api",
+  "version": "0.1.0",
+  "description": "Indian PIN code lookup — PIN → district + state. Monthly snapshot of data.gov.in dataset.",
+  "type": "module",
+  "private": true,
+  "license": "MIT",
+  "author": "Chirag Singhal",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chirag127/oriz-pincode-api.git"
+  },
+  "scripts": {
+    "scrape": "node scripts/scrape.mjs"
+  }
+}

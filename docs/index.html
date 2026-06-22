@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Oriz Pincode API — Indian PIN code lookup</title>
+    <meta name="description" content="PIN → district + state lookup for India. Monthly snapshot of the data.gov.in pincode directory. Free, open data." />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <meta name="theme-color" content="#0b6e4f" />
+    <style>
+      :root { color-scheme: light dark; --fg: #111; --bg: #fafafa; --accent: #0b6e4f; --card: #fff; --muted: #555; }
+      @media (prefers-color-scheme: dark) { :root { --fg: #eee; --bg: #111; --card: #1a1a1a; --muted: #aaa; } }
+      * { box-sizing: border-box; }
+      body { font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, sans-serif; margin: 0; color: var(--fg); background: var(--bg); }
+      main { max-width: 720px; margin: 0 auto; padding: 2rem 1rem; }
+      h1 { margin: 0 0 .25rem; font-size: 2rem; }
+      .tag { color: var(--muted); margin-bottom: 2rem; }
+      .card { background: var(--card); border-radius: 12px; padding: 1.25rem; margin: 1rem 0; box-shadow: 0 1px 3px rgba(0,0,0,.08); }
+      input { font: inherit; padding: .6rem .8rem; border-radius: 8px; border: 1px solid #ccc; width: 100%; max-width: 200px; }
+      button { font: inherit; padding: .6rem 1rem; border-radius: 8px; border: 0; background: var(--accent); color: #fff; cursor: pointer; }
+      .result { margin-top: 1rem; padding: .75rem 1rem; background: rgba(11,110,79,.08); border-radius: 8px; min-height: 2.2rem; }
+      code { background: rgba(127,127,127,.15); padding: .15rem .4rem; border-radius: 4px; }
+      a { color: var(--accent); }
+      footer { margin-top: 3rem; color: var(--muted); font-size: .9rem; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Oriz Pincode API</h1>
+      <p class="tag">Indian PIN code → district + state. Monthly snapshot of <a href="https://data.gov.in/resource/all-india-pincode-directory">data.gov.in</a>.</p>
+
+      <div class="card">
+        <h2 style="margin-top:0">Try it</h2>
+        <p>Enter a 6-digit Indian PIN code:</p>
+        <input id="pin" type="text" inputmode="numeric" maxlength="6" placeholder="e.g. 400001" />
+        <button id="go">Lookup</button>
+        <div class="result" id="out">—</div>
+      </div>
+
+      <div class="card">
+        <h2 style="margin-top:0">Endpoints</h2>
+        <ul>
+          <li><code>/data/latest.json</code> — current snapshot</li>
+          <li><code>/data/pincodes.json</code> — same data, stable name</li>
+        </ul>
+        <p>Both are flat JSON: <code>{ source, fetchedAt, count, pincodes: [{ pincode, district, state, officeName }] }</code>.</p>
+      </div>
+
+      <div class="card">
+        <h2 style="margin-top:0">Schedule</h2>
+        <p>Refreshed monthly on the first Monday at 06:30 IST. Workflow re-fetches the upstream CSV; if upstream is unreachable, the last good snapshot is retained.</p>
+      </div>
+
+      <footer>
+        Data source: <a href="https://data.gov.in/resource/all-india-pincode-directory">data.gov.in — All India Pincode Directory</a>, used under the
+        <a href="https://data.gov.in/government-open-data-license-india">Government Open Data License – India</a>.
+        Code MIT. <a href="https://github.com/chirag127/oriz-pincode-api">Source on GitHub</a>.
+      </footer>
+    </main>
+
+    <script>
+      const $ = (id) => document.getElementById(id);
+      let cache = null;
+      async function load() {
+        if (cache) return cache;
+        const r = await fetch("/data/latest.json");
+        cache = await r.json();
+        return cache;
+      }
+      async function lookup() {
+        const pin = $("pin").value.trim();
+        const out = $("out");
+        if (!/^\d{6}$/.test(pin)) { out.textContent = "Enter a 6-digit PIN."; return; }
+        out.textContent = "Looking up…";
+        try {
+          const data = await load();
+          const hit = data.pincodes.find((p) => p.pincode === pin);
+          if (!hit) { out.textContent = `No entry for ${pin} in this snapshot (${data.count} records).`; return; }
+          out.innerHTML = `<strong>${hit.pincode}</strong> — ${hit.district}, ${hit.state} <span style="color:var(--muted)">(${hit.officeName})</span>`;
+        } catch (e) { out.textContent = "Error: " + e.message; }
+      }
+      $("go").addEventListener("click", lookup);
+      $("pin").addEventListener("keydown", (e) => { if (e.key === "Enter") lookup(); });
+      if ("serviceWorker" in navigator) {
+        // No SW yet — manifest only for installability.
+      }
+    </script>
+  </body>
+</html>
